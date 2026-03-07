@@ -394,17 +394,43 @@ const COLLABORATORS = [
 const BUDGETS = [
   {id:'b1',firstName:'Aurélie',lastName:'Martin',initials:'MA',color:'#007a77',budget:150,period:'mensuel',active:true,
    deposits:[{date:'16/12/2025 11:53',amount:150,state:'Reçu',info:'Par prélèvement SEPA'}],
-   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 482',bic:'CEPAFRPP444',holder:'MARTIN AURELIE',created:'16/12/2025 11:43',ref:'918827324655C1E9F5A4C44B384AE5',status:'actif'},
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 482',bic:'CEPAFRPP444',holder:'MARTIN AURELIE',created:'16/12/2025 11:43',ref:'918827324655C1E9F5A4C44B384AE5',status:'actif',city:'La roche sur yon',depositAmount:10},
    clients:[{name:'Thierry Martin',role:'Tuteur'},{name:'Julie Tanet',role:''}]},
-  {id:'b2',firstName:'Philippe',lastName:'Durand',initials:'DP',color:'#e67e22',budget:100,period:'mensuel',active:true,deposits:[{date:'10/09/2025 14:51',amount:-10,state:'Remboursé',info:'Par virement bancaire'},{date:'05/09/2025 18:15',amount:100,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Marc Lefebvre',role:'Tuteur'}]},
-  {id:'b3',firstName:'Nathalie',lastName:'Bernard',initials:'BN',color:'#2196F3',budget:80,period:'mensuel',active:true,deposits:[{date:'20/11/2025 09:00',amount:80,state:'Reçu',info:'Par prélèvement SEPA'},{date:'15/10/2025 10:30',amount:50,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Claire Moreau',role:'Curateur'},{name:'Éric Fontaine',role:''}]},
-  {id:'b4',firstName:'Victor',lastName:'Rousseau',initials:'RV',color:'#e67e22',budget:200,period:'mensuel',active:true,deposits:[{date:'12/11/2025 16:20',amount:150,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'},{date:'01/10/2025 09:45',amount:50,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Sophie Blanc',role:'Tuteur'}]},
-  {id:'b5',firstName:'Camille',lastName:'Lefèvre',initials:'LC',color:'#007a77',budget:120,period:'mensuel',active:true,deposits:[{date:'08/11/2025 14:00',amount:100,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Antoine Roche',role:'Curateur'},{name:'Lucie Perret',role:'Tuteur'}]},
-  {id:'b6',firstName:'Emma',lastName:'Girard',initials:'GE',color:'#8e44ad',budget:90,period:'mensuel',active:false,deposits:[{date:'22/05/2025 15:08',amount:50,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Françoise Duval',role:'Tuteur'}]},
-  {id:'b7',firstName:'Pierre',lastName:'Dubois',initials:'DP',color:'#e67e22',budget:0,period:'mensuel',active:true,deposits:[{date:'03/09/2025 11:30',amount:150,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'},{date:'18/07/2025 08:45',amount:100,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Nadia Boucher',role:''},{name:'Gérard Petit',role:'Tuteur'}]},
-  {id:'b8',firstName:'Margaux',lastName:'Simon',initials:'SM',color:'#2196F3',budget:60,period:'hebdomadaire',active:true,deposits:[{date:'25/10/2025 17:00',amount:50,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Hélène Gauthier',role:'Curateur'}]},
-  {id:'b9',firstName:'Théo',lastName:'Laurent',initials:'LT',color:'#007a77',budget:110,period:'mensuel',active:true,deposits:[{date:'14/11/2025 13:15',amount:100,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'},{date:'30/09/2025 10:00',amount:50,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Patrick Renaud',role:'Tuteur'},{name:'Isabelle Morin',role:''}]},
-  {id:'b10',name:'Association AMAP',initials:'AA',color:'#e67e22',budget:500,period:'mensuel',active:true,deposits:[{date:'01/12/2025 09:00',amount:150,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'},{date:'01/11/2025 09:00',amount:150,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'},{date:'01/10/2025 09:00',amount:100,state:'Reçu',info:'Par prélèvement SEPA\nLe prélèvement est arrivé sur votre compte'}],mandate:null,clients:[{name:'Jean-Paul Marchand',role:'Trésorier'},{name:'Marie Collet',role:''}]}
+  {id:'b2',firstName:'Philippe',lastName:'Durand',initials:'DP',color:'#e67e22',budget:100,period:'mensuel',active:true,
+   deposits:[{date:'05/09/2025 18:15',amount:100,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 219',bic:'BNPAFRPP',holder:'DURAND PHILIPPE',created:'02/09/2025 09:30',ref:'A7F3B924816DE5C2F0A9347B1C8E60',status:'actif',city:'Nantes',depositAmount:10},
+   clients:[{name:'Marc Lefebvre',role:'Tuteur'}]},
+  {id:'b3',firstName:'Nathalie',lastName:'Bernard',initials:'BN',color:'#2196F3',budget:80,period:'mensuel',active:true,
+   deposits:[{date:'20/11/2025 09:00',amount:50,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 651',bic:'CEPAFRPP444',holder:'BERNARD NATHALIE',created:'15/11/2025 14:20',ref:'D4E8C1A7F936B520E7D14A8C39F2B1',status:'actif',city:'Les Sables-d\'Olonne',depositAmount:10},
+   clients:[{name:'Claire Moreau',role:'Curateur'},{name:'Éric Fontaine',role:''}]},
+  {id:'b4',firstName:'Victor',lastName:'Rousseau',initials:'RV',color:'#e67e22',budget:200,period:'mensuel',active:true,
+   deposits:[{date:'12/11/2025 16:20',amount:200,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 873',bic:'CRLYFRPP',holder:'ROUSSEAU VICTOR',created:'10/11/2025 10:15',ref:'B5C9D2E8F1A7364C80B2E9F5A3D716',status:'actif',city:'La roche sur yon',depositAmount:10},
+   clients:[{name:'Sophie Blanc',role:'Tuteur'}]},
+  {id:'b5',firstName:'Camille',lastName:'Lefèvre',initials:'LC',color:'#007a77',budget:120,period:'mensuel',active:true,
+   deposits:[{date:'08/11/2025 14:00',amount:100,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 394',bic:'CEPAFRPP444',holder:'LEFEVRE CAMILLE',created:'01/11/2025 16:45',ref:'F8A1D3C6E924B750C1F8E2A4B7D930',status:'actif',city:'Luçon',depositAmount:10},
+   clients:[{name:'Antoine Roche',role:'Curateur'},{name:'Lucie Perret',role:'Tuteur'}]},
+  {id:'b6',firstName:'Emma',lastName:'Girard',initials:'GE',color:'#8e44ad',budget:90,period:'mensuel',active:false,
+   deposits:[{date:'22/05/2025 15:08',amount:50,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 127',bic:'BNPAFRPP',holder:'GIRARD EMMA',created:'15/05/2025 11:00',ref:'C2D7E9F1A835B640D3C1F8A2E5B749',status:'actif',city:'Fontenay-le-Comte',depositAmount:10},
+   clients:[{name:'Françoise Duval',role:'Tuteur'}]},
+  {id:'b7',firstName:'Pierre',lastName:'Dubois',initials:'DP',color:'#e67e22',budget:0,period:'mensuel',active:true,
+   deposits:[{date:'03/09/2025 11:30',amount:150,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 568',bic:'CEPAFRPP444',holder:'DUBOIS PIERRE',created:'28/08/2025 14:30',ref:'E6B4A8D2C9F1357A0E8B3C7F2D1A94',status:'actif',city:'La roche sur yon',depositAmount:10},
+   clients:[{name:'Nadia Boucher',role:''},{name:'Gérard Petit',role:'Tuteur'}]},
+  {id:'b8',firstName:'Margaux',lastName:'Simon',initials:'SM',color:'#2196F3',budget:60,period:'hebdomadaire',active:true,
+   deposits:[{date:'25/10/2025 17:00',amount:50,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 742',bic:'CRLYFRPP',holder:'SIMON MARGAUX',created:'20/10/2025 09:15',ref:'A1C3D5E7F9B2846C0A3E7D1F5B8C29',status:'actif',city:'Challans',depositAmount:10},
+   clients:[{name:'Hélène Gauthier',role:'Curateur'}]},
+  {id:'b9',firstName:'Théo',lastName:'Laurent',initials:'LT',color:'#007a77',budget:110,period:'mensuel',active:true,
+   deposits:[{date:'14/11/2025 13:15',amount:100,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:{iban:'FRXX XXXX XXXX XXXX XXXX 915',bic:'CEPAFRPP444',holder:'LAURENT THEO',created:'10/11/2025 10:00',ref:'D9F2A4B6C8E1357D0F3A7C2E5B8146',status:'actif',city:'La roche sur yon',depositAmount:10},
+   clients:[{name:'Patrick Renaud',role:'Tuteur'},{name:'Isabelle Morin',role:''}]},
+  {id:'b10',name:'Association AMAP',initials:'AA',color:'#e67e22',budget:500,period:'mensuel',active:true,
+   deposits:[{date:'01/12/2025 09:00',amount:200,state:'Reçu',info:'Par prélèvement SEPA'}],
+   mandate:null,clients:[{name:'Jean-Paul Marchand',role:'Trésorier'},{name:'Marie Collet',role:''}]}
 ];
 
 const CARDS = [
@@ -981,10 +1007,43 @@ function renderBudgetDetail(){
     h+=`</div>`;
   } else if(tab==='mandat'){
     if(b.mandate){
+      h+=`<div style="display:flex;gap:20px;align-items:flex-start">`;
+      // Left: Mandat info
+      h+=`<div style="flex:1;min-width:0">`;
       h+=`<div style="background:#fff;border-radius:8px;padding:20px">`;
       h+=`<div class="flex-between mb-16"><h3>Mandat</h3><a class="text-teal font-13" onclick="showToast('Nouveau mandat')">+ Nouveau mandat</a></div>`;
       h+=`<div class="font-13 mb-16">Statut: <span class="text-teal font-bold">${b.mandate.status}</span></div>`;
-      h+=`<table style="width:100%;font-size:13px"><tr><td class="text-muted">IBAN</td><td>${b.mandate.iban}</td><td class="text-muted">BIC</td><td>${b.mandate.bic}</td></tr><tr><td class="text-muted">Titulaire</td><td>${b.mandate.holder}</td><td class="text-muted">Créé le</td><td>${b.mandate.created}</td></tr><tr><td class="text-muted">Référence unique</td><td colspan="3" style="font-size:11px">${b.mandate.ref}</td></tr></table>`;
+      h+=`<table style="width:100%;font-size:13px;border-collapse:collapse">`;
+      h+=`<tr><td style="padding:10px 12px;border:1px solid #eff0f4;color:#888;width:130px">IBAN</td><td style="padding:10px 12px;border:1px solid #eff0f4">${b.mandate.iban}</td><td style="padding:10px 12px;border:1px solid #eff0f4;color:#888;width:80px">BIC</td><td style="padding:10px 12px;border:1px solid #eff0f4">${b.mandate.bic}</td></tr>`;
+      h+=`<tr><td style="padding:10px 12px;border:1px solid #eff0f4;color:#888">Titulaire</td><td style="padding:10px 12px;border:1px solid #eff0f4">${b.mandate.holder}</td><td style="padding:10px 12px;border:1px solid #eff0f4;color:#888">Créé le</td><td style="padding:10px 12px;border:1px solid #eff0f4">${b.mandate.created}</td></tr>`;
+      h+=`<tr><td style="padding:10px 12px;border:1px solid #eff0f4;color:#888">Référence unique</td><td colspan="3" style="padding:10px 12px;border:1px solid #eff0f4;font-size:11px">${b.mandate.ref}</td></tr>`;
+      h+=`</table></div></div>`;
+      // Right: Autorisation papier
+      h+=`<div style="flex:1;min-width:0">`;
+      h+=`<div style="background:#fff;border-radius:8px;padding:20px">`;
+      h+=`<h3 style="margin-bottom:16px">Autorisation papier</h3>`;
+      h+=`<div style="background:#fafafa;border:1px solid #e5e5e5;border-radius:6px;padding:24px;font-size:11px;line-height:1.6;color:#333;max-height:400px;overflow-y:auto">`;
+      h+=`<div style="text-align:center;font-weight:700;margin-bottom:4px;font-size:12px">CRÉATION ET FONCTIONNEMENT DE VOTRE</div>`;
+      h+=`<div style="text-align:center;font-weight:700;margin-bottom:4px;font-size:12px">"PORTE MONNAIE NUMÉRIQUE"</div>`;
+      h+=`<div style="text-align:center;font-weight:600;margin-bottom:4px;font-size:11px">CONSTITUTION ET RESTITUTION DU DÉPÔT</div>`;
+      h+=`<div style="text-align:center;font-weight:600;margin-bottom:12px;font-size:11px">PROCÉDURE DE REMBOURSEMENT</div>`;
+      h+=`<p style="margin-bottom:8px"><b>Ouverture d'un "Porte monnaie numérique"</b></p>`;
+      h+=`<p style="margin-bottom:10px">Afin de réaliser des dépenses pour votre compte, la société COURSEUR vous créé un espace personnel dans la solution de paiement Ezio et vous ouvre un "porte monnaie numérique". Pour cela, elle enregistre votre nom, prénom, votre nom et toutes coordonnées nécessaires pour vous communiquer les états de prélèvement et de dépenses.</p>`;
+      h+=`<p style="margin-bottom:8px"><b>Données personnelles collectées et traitement</b></p>`;
+      h+=`<p style="margin-bottom:10px">En acceptant d'ouvrir un "porte monnaie numérique", vous acceptez que des informations soient recueillies pour son bon fonctionnement. Ainsi, votre nom, prénom, éventuellement adresse(s), email et IBAN inscrits sur le présent mandat SEPA sont référencés dans la solution numérique Ezio utilisée par l'établissement d'aide à domicile qui vous accompagne.</p>`;
+      h+=`<p style="margin-bottom:8px"><b>Dépôt</b></p>`;
+      h+=`<p style="margin-bottom:10px">Afin de réaliser les premières dépenses, il est nécessaire d'alimenter ce "porte monnaie numérique" d'une somme appelée "Dépôt". Cette somme est définie par vous et l'établissement d'aide à domicile, en fonction de vos besoins.</p>`;
+      h+=`<p style="margin-bottom:10px">Vous acceptez d'être débité d'un dépôt de la somme de ...........<b>${b.mandate.depositAmount||10}</b>........... € (euros).</p>`;
+      h+=`<p style="margin-bottom:10px">En fin de contrat avec la société, la totalité du Dépôt vous sera restitué, sauf en cas d'incident de prélè - virement pour reconstituer votre Porte Monnaie Numérique, la société se réservant le droit de se rem - bourser du montant impayé.</p>`;
+      h+=`<p style="margin-bottom:8px"><b>Procédure de remboursement et fin des prélèvements</b></p>`;
+      h+=`<p style="margin-bottom:10px">Même si vous avez autorisé le prélèvement, vous pouvez, sous un délai de huit semaines après le débit de la somme en question, réclamer le remboursement. Pour bloquer un prélèvement automatique (pour des raisons de désaccord sur la somme par exemple), vous devez passer par votre banque en fournis - sant le numéro de compte du fournisseur, avec le nom du fournisseur ou bien avec le RUM (Référence Unique du Mandat).</p>`;
+      h+=`<p style="margin-bottom:16px">Pour mettre fin définitivement à tous les prélèvements, il faut envoyer un courrier de résiliation par lettre recommandée avec accusé de réception à l'organisme.</p>`;
+      h+=`<div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:20px"><span>FAIT A : <b>${b.mandate.city||'La roche sur yon'}</b></span><span>LE : <b>${b.mandate.created.split(' ')[0]}</b></span></div>`;
+      h+=`<div style="margin-bottom:6px;font-size:10px;color:#888">SIGNATURE DU CLIENT (ou du représentant légal)</div>`;
+      h+=`<div style="height:60px;border-bottom:1px solid #ccc;margin-bottom:16px;font-style:italic;color:#aaa;padding-top:10px">Signature</div>`;
+      h+=`</div>`;
+      h+=`<div style="text-align:right;margin-top:16px"><button class="btn-outline" onclick="showToast('Modification de l\\'autorisation')">Changer</button></div>`;
+      h+=`</div></div>`;
       h+=`</div>`;
     } else {
       h+=`<div style="background:#fff;border-radius:8px;padding:40px 20px;text-align:center"><div class="text-muted font-13">Aucun mandat configuré</div></div>`;
