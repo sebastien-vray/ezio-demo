@@ -24,7 +24,7 @@ input,textarea,select{font-family:inherit;outline:none}
 .login-left .desc{color:#555;font-size:14px;text-align:center;max-width:400px;line-height:1.6;margin-bottom:30px}
 .login-illustration{width:360px;height:280px;margin-bottom:30px}
 .login-trust{color:#007a77;font-size:14px;font-weight:600;text-align:center;line-height:1.6}
-.login-right{width:480px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;padding:40px}
+.login-right{flex:1;background:#f7f7f7;display:flex;align-items:center;justify-content:center;padding:40px}
 .login-form{width:100%;max-width:380px}
 .login-form h2{color:#2c3e50;font-size:24px;font-weight:700;text-align:center;margin-bottom:32px}
 .login-form label{display:block;font-size:14px;font-weight:500;color:#333;margin-bottom:6px}
@@ -575,28 +575,24 @@ async function handleLogin(){
 
   if(CONFIG.demoMode&&email==='demo@ezio.fr'&&pw==='demo123'){
     STATE.user={name:'Morel',firstName:'Sébastien',email};
-    sessionStorage.setItem('ezio_user',JSON.stringify(STATE.user));
     showApp();return;
   }
   if(CONFIG.googleScriptUrl){
     try{
       const r=await fetch(CONFIG.googleScriptUrl,{method:'POST',body:JSON.stringify({email,password:pw}),headers:{'Content-Type':'text/plain'}});
       const d=await r.json();
-      if(d.success){STATE.user={name:d.name,firstName:d.firstName,email};sessionStorage.setItem('ezio_user',JSON.stringify(STATE.user));showApp();return;}
+      if(d.success){STATE.user={name:d.name,firstName:d.firstName,email};showApp();return;}
     }catch(e){console.error(e);}
   }
   $('#login-error').style.display='block';
 }
 
 function checkSession(){
-  const u=sessionStorage.getItem('ezio_user');
-  if(u){STATE.user=JSON.parse(u);return true;}
-  return false;
+  return !!STATE.user;
 }
 
 function logout(){
   STATE.user=null;
-  sessionStorage.removeItem('ezio_user');
   hide('#app-page');
   show('#login-page');
   $('#login-page').style.display='flex';
@@ -935,7 +931,7 @@ function renderBudgetsPage(){
 
 function renderBudgetsList(){
   const activeBudgets=BUDGETS.filter(b=>b.active!==false);
-  let h=`<div class="list-panel-header"><h2>Budgets</h2><button class="btn-add" onclick="showToast('Nouveau budget créé')">+</button></div>`;
+  let h=`<div class="list-panel-header"><h2>Budgets</h2><button class="btn-add" onclick="showNewBudgetForm()">+</button></div>`;
   h+=`<div class="list-panel-tabs"><div class="list-panel-tab active">Actifs</div><div class="list-panel-tab" onclick="showToast('Budgets archivés')">Archivés</div></div>`;
   h+=`<div class="list-panel-search"><input placeholder="Rechercher" oninput="filterBudgets(this.value)"></div>`;
   h+=`<div class="list-panel-items" id="budget-items">`;
@@ -948,6 +944,52 @@ function renderBudgetsList(){
 }
 
 function selectBudget(id){STATE.budgets.selectedId=id;STATE.budgets.activeTab='courses';renderBudgetsPage();}
+
+function showNewBudgetForm(){
+  STATE.budgets.selectedId=null;
+  renderBudgetsList();
+  let h=`<div class="page-content" style="overflow-y:auto;max-height:calc(100vh - 120px)">`;
+  h+=`<div style="margin-bottom:20px"><a onclick="renderBudgetsPage()" style="cursor:pointer;font-size:14px;color:#2c3e50;display:flex;align-items:center;gap:6px"><span style="font-size:18px">‹</span> Retour</a></div>`;
+  h+=`<div style="display:flex;gap:24px;align-items:flex-start">`;
+  // Left: Form
+  h+=`<div style="flex:2;min-width:0">`;
+  h+=`<h2 style="font-size:18px;font-weight:600;margin-bottom:24px;color:#2c3e50">Ajout d'un nouveau client</h2>`;
+  h+=`<div style="margin-bottom:16px"><label style="font-size:13px;font-weight:500;color:#2c3e50;margin-bottom:6px;display:block">Prénom *  <span style="color:#e74c3c;font-size:12px;font-weight:400">Le champ est obligatoire</span></label><input id="nb-prenom" type="text" placeholder="Prénom" style="width:100%;padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit"></div>`;
+  h+=`<div style="margin-bottom:16px"><label style="font-size:13px;font-weight:500;color:#2c3e50;margin-bottom:6px;display:block">Nom *</label><input id="nb-nom" type="text" placeholder="Nom" style="width:100%;padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit"></div>`;
+  h+=`<div style="margin-bottom:16px"><label style="font-size:13px;font-weight:500;color:#2c3e50;margin-bottom:6px;display:block">Email</label><input id="nb-email" type="email" placeholder="Email" style="width:100%;padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit"></div>`;
+  h+=`<div style="margin-bottom:16px"><label style="font-size:13px;font-weight:500;color:#2c3e50;margin-bottom:6px;display:block">Téléphone</label><div style="display:flex;gap:8px"><select style="padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit;width:80px"><option>+33</option></select><input id="nb-tel" type="text" placeholder="Téléphone" style="flex:1;padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit"></div></div>`;
+  h+=`<div style="margin-bottom:16px"><label style="font-size:13px;font-weight:500;color:#2c3e50;margin-bottom:6px;display:block">Adresse</label><input id="nb-adresse" type="text" placeholder="Adresse" style="width:100%;padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit"></div>`;
+  h+=`<div style="margin-bottom:24px"><label style="font-size:13px;font-weight:500;color:#2c3e50;margin-bottom:6px;display:block">Centre analytique</label><input id="nb-centre" type="text" placeholder="" style="width:100%;padding:10px 14px;border:1px solid #cdd1dd;border-radius:8px;font-size:13px;font-family:inherit"></div>`;
+  h+=`<div style="margin-bottom:16px"><h3 style="font-size:15px;font-weight:600;color:#2c3e50;margin-bottom:12px">Remboursement des courses</h3>`;
+  h+=`<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><div class="toggle" onclick="this.classList.toggle('on')"><div class="knob"></div></div><span class="font-13">Les courses ne sont pas remboursées par</span><b style="font-size:13px">Attention !</b></div>`;
+  h+=`<div class="font-13 text-muted" style="margin-bottom:20px">En décochant cette case ne sera pas prélevé lors de la confirmation de la course</div></div>`;
+  h+=`<button onclick="createBudget()" style="padding:10px 28px;background:#007a77;color:#fff;font-size:14px;font-weight:600;border-radius:8px;border:none;cursor:pointer;font-family:inherit">Créer</button>`;
+  h+=`</div>`;
+  // Right: Mandat de prélèvement
+  h+=`<div style="flex:1;min-width:240px">`;
+  h+=`<div style="background:#fff;border-radius:8px;padding:24px">`;
+  h+=`<h3 style="font-size:16px;font-weight:600;margin-bottom:24px;color:#2c3e50">Mandat de<br>prélèvement</h3>`;
+  h+=`<div style="text-align:center;padding:20px 0"><p class="font-13 text-muted" style="margin-bottom:16px">Afin d'activer les prélèvements<br>veuillez ajouter un mandat</p>`;
+  h+=`<button onclick="showToast('Ajout de mandat')" style="padding:10px 28px;background:#007a77;color:#fff;font-size:14px;font-weight:600;border-radius:8px;border:none;cursor:pointer;font-family:inherit">Ajouter</button>`;
+  h+=`</div></div></div>`;
+  h+=`</div></div>`;
+  html('#main-content',h);
+}
+
+function createBudget(){
+  var prenom=$('#nb-prenom').value.trim();
+  var nom=$('#nb-nom').value.trim();
+  if(!prenom||!nom){showToast('Prénom et nom sont obligatoires');return;}
+  var initials=(nom.charAt(0)+prenom.charAt(0)).toUpperCase();
+  var colors=['#007a77','#e67e22','#2196F3','#8e44ad'];
+  var newId='b'+(BUDGETS.length+1);
+  var amounts=[50,100,150,200];
+  BUDGETS.push({id:newId,firstName:prenom,lastName:nom,initials:initials,color:colors[BUDGETS.length%colors.length],budget:0,period:'mensuel',active:true,deposits:[],mandate:null,clients:[]});
+  STATE.budgets.selectedId=newId;
+  STATE.budgets.activeTab='courses';
+  renderBudgetsPage();
+  showToast('Budget '+nom+' '+prenom+' créé');
+}
 
 function renderBudgetDetail(){
   const b=getBudget(STATE.budgets.selectedId);if(!b)return;
